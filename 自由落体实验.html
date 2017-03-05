@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自由落体实验</title>
+</head>
+<body>
+	<canvas id="canvas" style="border:1px solid #ccc;display:block;margin:50px auto;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+	
+	<script>
+		//定义小球的坐标X,Y,半径，加速度，x轴速度，y轴速度，颜色
+		var ball={x:100,y:100,r:20,g:2,vx:5,vy:0,color:'#f00'}
+		window.onload=function(){
+			var canvas=document.getElementById('canvas');
+			var context=canvas.getContext('2d');
+			
+			canvas.width=1024;
+			canvas.height=600;
+			
+			setInterval(function(){
+				draw(context);
+				update();
+			},50);
+			
+			//绘制小球函数
+			function draw(cxt){
+				cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
+				cxt.fillStyle=ball.color;
+				cxt.beginPath();
+				cxt.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
+				cxt.closePath();
+				cxt.fill();
+			}
+			
+			//小球运动函数
+			function update(){
+				ball.x+=ball.vx;
+				ball.y+=ball.vy;
+				ball.vy+=ball.g;
+				
+				//碰撞检测及反弹
+				if(ball.y>=canvas.height-ball.r){
+					ball.y=canvas.height-ball.r;
+					ball.vy=-ball.vy*0.7;//0.7为碰撞损耗系数
+				}
+			}
+		}
+	</script>
+</body>
+</html>
+
