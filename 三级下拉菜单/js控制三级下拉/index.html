@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>js三级下拉菜单</title>
+<meta charset=utf-8 />
+<style type="text/css">
+.nav{font-size:14px;font-weight:bold;list-style:none;}
+.nav li{float:left;margin-right:1px;}
+.nav li a{display:block;text-decoration:none;color:#777;background-color:#ddd;width:100px;text-align:center;line-height:30px;}
+.nav li ul{display:none;list-style:none;position:relative;width:100px;padding:0;}
+.nav li ul li ul{position:absolute;top:0;left:100px;}
+.nav li a:hover{background-color:#900;color:white;}
+</style>
+<script>
+	window.onload=function(){
+		//var isIE=!window.ActiveXObject;
+		//var isIE6=isIE&&!window.XMLHttpRequest;
+		//if(isIE6){
+			var lis=document.getElementsByTagName("li");
+			for(var i=0;i<lis.length;i++){
+				lis[i].onmouseover=function(){
+					var u=this.getElementsByTagName("ul")[0];
+					if(u!=undefined){
+					u.style.display="block";
+					}
+				}
+				lis[i].onmouseout=function(){
+					var u=this.getElementsByTagName("ul")[0];
+					if(u!=undefined){
+					u.style.display="none";
+					}
+				}
+			}
+		//}
+	}
+</script>
+</head>
+<body>
+		<ul class="nav">
+			<li><a href="#">首页</a></li>
+			<li><a href="#">课程中心</a></li>
+			<li><a href="#">学习中心 +</a>
+				<ul>
+					<li><a href="#">Web前端+</a>
+						<ul>
+							<li><a href="#">HTML/CSS</a></li>
+							<li><a href="#">Javascript</a></li>
+							<li><a href="#">jQuery</a></li>
+						</ul>
+					</li>
+					<li><a href="#">移动开发+</a>
+						<ul>
+							<li><a href="#">iOS开发</a></li>
+							<li><a href="#">安卓开发</a></li>
+							<li><a href="#">WP开发</a></li>
+						</ul>
+					</li>
+					<li><a href="#">后台开发</a></li>
+				</ul>
+			</li>
+			<li><a href="#">经典案例</a></li>
+			<li><a href="#">关于我们</a></li>
+		</ul>
+</body>
+</html>
