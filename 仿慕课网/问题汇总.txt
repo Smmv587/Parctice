@@ -1,0 +1,75 @@
+1、如何让bg和nav不在同平面，让bg在下，其他内容可以在bg之上？
+
+z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。元素可拥有负的 z-index 属性值
+Z-index 仅能在定位元素上奏效（例如 position:absolute;）！
+
+
+2、background-size的cover特定值会保持图像本身的宽高比例,将图片缩放到正好完全覆盖定义背景的区域。
+
+
+3、CSS3中的box-shadow属性被用来添加阴影:
+
+div
+{
+box-shadow: 10px 10px 5px #888888;
+}
+
+4、border-radius:50%图片会变形？
+
+用margin取代padding；
+
+
+5、如何改水平线hr 的颜色？
+
+css用dashed：#xxx；
+
+
+6、浮动影响怎么清除？
+
+
+
+7、图片有四像素的空白？
+
+bug
+img{border:none;display:block;}
+
+
+
+8、轮播动效加入主页后失效？
+
+浮动影响，父元素设定position:relative；
+	 子元素设定position:absolute；
+
+
+9、返回效果js加载失效？
+
+两个js都是window.onload，同时加载会产生顺序上的问题，计算机只识别第一个window.onload；
+解决方法，将连个js文件合并在同一个js文件中。
+
+
+
+10、为何obtn=document.getElementsByClassName("button")会在backTop函数中未定义？
+
+因为getElementsByClassName()是一个集合，哪怕只有一个元素，也需要将obtn.style.display='blcok';写成obtn[0].style.display='blcok';。
+
+
+
+11、为何  .sidebar-item img   下的   border-bottom:1px solid #ddd;   会失效，然而   border-top:1px solid #ddd;   却有效呢？
+
+
+
+12、为何background-top背景图片载入指定URL会失败？
+
+
+
+13、火狐浏览器点击<a>标签链接时会产生虚边框？
+
+
+
+
+
+
+
+
+
+
