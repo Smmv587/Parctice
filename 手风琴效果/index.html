@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>手风琴效果</title>
+<link rel="stylesheet" href="styles/reset.css">
+<style>
+	#container{
+		position:relative;
+		height:477px;
+		margin:100px auto;
+		border-right:1px solid #ccc;
+		border-bottom:1px solid #ccc;
+		overflow:hidden;
+	}
+	#container img{
+		position:absolute;
+		display:block;
+		left:0;
+		border-left:1px solid #ccc;
+	}		
+</style>
+</head>
+<body>
+	<div id='container'>
+		<img src="images/door1.png" />
+		<img src="images/door2.png" />
+		<img src="images/door3.png" />
+		<img src="images/door4.png" />
+	</div>
+
+	<script>
+		window.onload=function(){
+			var box=document.getElementById('container');
+			var imgs=box.getElementsByTagName('img');
+			var imgWidth=imgs[0].offsetWidth;
+			var exposeWidth=160;//设置堆叠图片展现的宽度
+			var boxWidth=imgWidth+(imgs.length-1)*exposeWidth;
+			
+			//设置容器总宽度
+			box.style.width=boxWidth+'px';
+			
+			//设置每张图片的初始位置,除第一张外
+			function setImgsPosition(){
+				for(var i=1;i<imgs.length;i++){
+					imgs[i].style.left=imgWidth+exposeWidth*(i-1)+'px';
+				}
+			}
+			setImgsPosition();
+			
+			//计算每张图片打开时移动的距离
+			var slider=imgWidth-exposeWidth;
+			
+			//为每张图片绑定事件
+			for(var i=0;i<imgs.length;i++){
+				(function(i){
+					imgs[i].onmouseover=function(){
+						setImgsPosition();
+						for(var j=1;j<=i;j++){
+							imgs[j].style.left=parseInt(imgs[j].style.left,10)-slider+'px';
+						}
+					};
+				})(i);
+			};
+		}
+	</script>
+</body>
+</html>
