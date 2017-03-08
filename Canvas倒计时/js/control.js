@@ -5,7 +5,8 @@ var RAIDUS=6;
 var MARGIN_TOP=50;
 var MARGIN_LEFT=100;
 
-const endTime=new Date(2017,2,8,10,30,0);//倒计时截止时间3月8日
+var endTime=new Date();
+endTime.setTime(endTime.getTime()+3600*2000);
 var curShowTimeSeconds=0;//定义当前时间距离截止时间差值
 var balls=[];
 const colors=['#33b5e5','#0099cc','#aa66cc','#9933cc','#99cc00','#669900','#ffbb33','#ff8800','#ff4444','#cc0000'];
